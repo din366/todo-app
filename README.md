@@ -1,7 +1,7 @@
 <h1 style="text-align: center;">To-do List на чистом js
 </h1>
 
-<a href="todo-ofgh7mp9b-din366.vercel.app" style="text-align: center;">Развернутое приложение на Vercel</a>
+<a href="https://todo-app-mu-six-85.vercel.app" style="text-align: center;">Развернутое приложение на Vercel</a>
 
 ### Что реализовано:
 <ul>
