@@ -2,10 +2,21 @@ import {
   addUserTask,
   deleteUserTask,
   successUserTask,
-  renameUserTasks } from "./storageFunc.js";
+  renameUserTasks,
+} from "./storageFunc.js";
 import { createTableRow } from "./createElements.js";
 import { renderPage } from "./render.js";
 
+export const disabledButtons = (formClass, buttonClass) => {
+  const input = document.querySelector(formClass);
+  input.addEventListener('input', (e) => {
+    if (e.target.value === '') {
+      document.querySelector(buttonClass).disabled = true;
+    } else {
+      document.querySelector(buttonClass).disabled = false;
+    }
+  });
+};
 
 export const listenersForm = () => {
   const form = document.querySelector('.add-tasks-form');
@@ -26,6 +37,16 @@ export const listenersForm = () => {
       (document.querySelector('tbody').childElementCount + 1), // all tasks + 1
       userTask, randomId, 'В процессе', importance);
     form.reset();
+  });
+
+  form.querySelector('.btn-reset').addEventListener('click', () => {
+    form.querySelector('.btn-add').disabled = true;
+  });
+
+  form.querySelector('.form-select').addEventListener('change', () => {
+    if (form.querySelector('.form-control').value === '') {
+      form.querySelector('.btn-add').disabled = true;
+    }
   });
 };
 
@@ -57,14 +78,18 @@ export const tbodyListeners = () => {
 
     if (e.target.classList.contains('btn-edit')) {
       taskRow.children[1].contentEditable = 'true'; // cell can be edited
-      taskRow.children[1].style.backgroundColor = '#faf1de';
+      /* taskRow.children[1].style.backgroundColor = '#faf1de'; */
+      taskRow.children[1].style.borderStyle = 'double';
+      taskRow.children[1].style.borderColor = 'red';
       e.target.closest('.btn-edit').style.display = 'none';
       taskRow.querySelector('.btn-save').style.display = 'inline-block';
     }
 
     if (e.target.classList.contains('btn-save')) {
       taskRow.children[1].contentEditable = 'false';
-      taskRow.children[1].style.backgroundColor = '';
+      /* taskRow.children[1].style.backgroundColor = ''; */
+      taskRow.children[1].style.borderStyle = 'solid';
+      taskRow.children[1].style.borderColor = '#dfe0e1';
       e.target.closest('.btn-save').style.display = 'none';
       taskRow.querySelector('.btn-edit').style.display = 'inline-block';
       const taskId = taskRow.dataset.id;
@@ -72,17 +97,6 @@ export const tbodyListeners = () => {
 
       renameUserTasks(localStorage.getItem('currentUserName'),
         taskId, renameTask); // rename task in localStorage
-    }
-  });
-};
-
-export const disabledButtons = (formClass, buttonClass) => {
-  const input = document.querySelector(formClass);
-  input.addEventListener('input', (e) => {
-    if (e.target.value === '') {
-      document.querySelector(buttonClass).disabled = true;
-    } else {
-      document.querySelector(buttonClass).disabled = false;
     }
   });
 };

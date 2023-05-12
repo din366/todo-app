@@ -1,4 +1,4 @@
-.success_block_wrapper{
+.success_block_wrapper {
   display: none;
   font-size: 18px;
   max-width: 300px;
@@ -9,7 +9,7 @@
   margin-bottom: 20px;
 }
 
-.table-styles{
+.table-styles {
   box-shadow: 7px 13px 21px 5px rgb(0 0 0 / 11%);
 }
 
@@ -21,7 +21,8 @@
   display: none;
 }
 
-.btn-edit, .btn-save {
+.btn-edit,
+.btn-save {
   width: 135px;
 }
 
@@ -85,3 +86,7 @@
 }
 
 /* END modal */
+
+.table-bordered>:not(caption)>*>* {
+  border-width: 1px 1px 1px 1px;
+}

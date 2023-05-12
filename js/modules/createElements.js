@@ -70,7 +70,7 @@ export const createFormForAddTasks = (parentClass) => {
 
 /* Create task row function (only render task in table) */
 export const createTableRow = (tableBody, tableTaskCount, task, id,
-    status, importance) => {
+  status, importance) => {
   const tableTaskTr = document.createElement('tr');
   tableTaskTr.classList.add('table-light', 'text-center');
   tableTaskTr.dataset.id = id;
@@ -150,7 +150,7 @@ export const createTable = (parentClass, userName) => {
 
   /* show table if there are tasks or show block 'all tasks completed' */
   if (localStorage.getItem(userName) !== null &&
-  JSON.parse(localStorage.getItem(userName)).length !== 0) {
+    JSON.parse(localStorage.getItem(userName)).length !== 0) {
     /* parse tasks from localStorage */
     parseUserTasks(userName);
     createSuccessTaskBlock(appContainer, 'none');
