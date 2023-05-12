@@ -1,6 +1,9 @@
 <h1 style="text-align: center;">To-do List на чистом js
 </h1>
 
+<img style="text-align: center; max-width: 600px;"
+  src="https://github.com/din366/images/blob/main/readme%20images/todo.png" alt="project image">
+
 <a href="https://todo-app-mu-six-85.vercel.app" style="text-align: center;">Развернутое приложение на Vercel</a>
 
 ### Что реализовано:
